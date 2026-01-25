@@ -3,436 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Industrial | Consultoría de Ingeniería, Data & Finanzas</title>
+    <title>Nexus Industrial | Ingeniería Avanzada & Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                midnight: '#0A192F', // Fondo principal
+                'midnight-light': '#112240', // Fondo para tarjetas oscuras
+                steel: '#4A5568',
+                electric: '#FF6B00', // Naranja vibrante (Costos/Acción)
+                growth: '#10B981',   // Verde (Rentabilidad/EBITDA)
+                'tech-gray': '#F1F5F9', // Gris técnico para fondo de soluciones
+              },
+              animation: {
+                  'grow-height': 'growHeight 1.5s ease-out forwards',
+                  'fade-in': 'fadeIn 1s ease-out forwards',
+              },
+              keyframes: {
+                  growHeight: {
+                      '0%': { height: '0%' },
+                      '100%': { height: 'var(--target-height)' },
+                  },
+                  fadeIn: {
+                      '0%': { opacity: '0' },
+                      '100%': { opacity: '1' },
+                  }
+              }
+            }
+          }
+        }
+    </script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .bg-navy { background-color: #1B263B; }
-        .text-navy { color: #1B263B; }
-        .bg-slate { background-color: #415A77; }
-        .text-slate { color: #415A77; }
-        .bg-gold { background-color: #C5A059; }
-        .text-gold { color: #C5A059; }
-        .border-gold { border-color: #C5A059; }
-
-        .hero-pattern {
-            background-color: #1B263B;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23415a77' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        body { font-family: 'Inter', sans-serif; }
+        
+        .data-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .cta-shadow:hover {
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4);
+            transform: translateY(-2px);
         }
 
-        /* Animación para simular carga de datos */
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        .animate-data { animation: pulse-soft 3s infinite ease-in-out; }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background-color: #ffffff;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #FF6B00;
+            box-shadow: 0 0 0 1px #FF6B00;
+        }
+
+        /* Estilo para el conector visual */
+        .connector-line {
+            background-image: linear-gradient(to bottom, #cbd5e1 50%, transparent 50%);
+            background-size: 2px 20px;
+            width: 2px;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-white text-slate-900">
 
-    <!-- Navegación -->
-    <nav class="fixed w-full z-50 bg-navy/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center shadow-lg shadow-gold/20">
-                        <i data-lucide="layers" class="text-navy w-6 h-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-white tracking-tight">NEXUS<span class="text-gold">IND</span></span>
+    <nav class="fixed w-full z-50 bg-midnight/95 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-electric rounded flex items-center justify-center">
+                    <i data-lucide="bar-chart-big" class="text-midnight w-5 h-5"></i>
                 </div>
-                
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                    <a href="#inicio" class="hover:text-gold transition-colors">Inicio</a>
-                    <a href="#servicios" class="hover:text-gold transition-colors">Servicios</a>
-                    <a href="#metodologia" class="hover:text-gold transition-colors">Metodología</a>
-                    <a href="#contacto" class="bg-gold text-navy px-5 py-2 rounded-full font-bold hover:bg-white transition-all">Consultoría Gratuita</a>
-                </div>
-
-                <button class="md:hidden text-white">
-                    <i data-lucide="menu"></i>
-                </button>
+                <span class="text-xl font-bold text-white tracking-tighter">NEXUS<span class="text-electric">IND</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#problema" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Problema</a>
+                <a href="#soluciones" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Soluciones</a>
+                <a href="#contacto" class="bg-electric text-midnight px-5 py-2.5 rounded font-bold text-sm hover:bg-white transition-all cta-shadow">Agenda una cita gratis</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-pattern">
-        <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent z-10"></div>
+    <header class="relative min-h-screen flex items-center pt-20 bg-midnight overflow-hidden data-grid-pattern">
         
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-20 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="py-12">
-                <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-gold/30 bg-gold/10">
-                    <span class="text-gold text-sm font-semibold tracking-wider uppercase">Ingeniería de Siguiente Nivel</span>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center py-20">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-electric/30 bg-electric/10 mb-8 text-electric text-xs font-bold uppercase tracking-widest">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-electric"></span>
+                    </span>
+                    Ingeniería de siguiente nivel
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                    Optimizamos su <span class="text-gold">Industria</span> a través de Datos.
+                
+                <h1 class="text-5xl lg:text-7xl font-black text-white leading-[1.1] mb-6">
+                    Transforma la ineficiencia en <span class="text-electric">rentabilidad</span> medible.
                 </h1>
-                <p class="text-xl text-gray-300 mb-10 leading-relaxed max-w-xl">
-                    Fusionamos la precisión de la ingeniería industrial con el poder del Big Data y la estrategia financiera para transformar operaciones complejas en activos de alto rendimiento.
+                
+                <p class="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl font-light">
+                    Optimizamos procesos industriales y financieros mediante ingeniería avanzada y analítica de datos. <strong class="text-white font-semibold">Reduce tus costos operativos entre un 15% y 30%</strong> con decisiones basadas en evidencia.
                 </p>
+                
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contacto" class="px-8 py-4 bg-gold text-navy font-bold rounded-lg text-center hover:shadow-lg hover:shadow-gold/30 transition-all active:scale-95">
-                        Agendar Consultoría
+                    <a href="#contacto" class="px-8 py-4 bg-electric text-midnight font-black rounded text-center transition-all uppercase text-sm tracking-wider hover:bg-white cta-shadow">
+                        Agenda una cita gratis
                     </a>
-                    <a href="#servicios" class="px-8 py-4 border border-white/30 text-white font-bold rounded-lg text-center hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-                        Nuestros Servicios <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    <a href="#soluciones" class="px-8 py-4 border border-white/20 text-white font-bold rounded text-center transition-all uppercase text-sm tracking-wider hover:bg-white/10 hover:border-white">
+                        Nuestros Servicios
                     </a>
                 </div>
             </div>
 
-            <!-- Sección de Datos (Reemplazo de Imágenes Dañadas) -->
-            <div class="hidden lg:block relative">
-                <div class="grid grid-cols-2 gap-6 animate-data">
-                    
-                    <!-- Card de Eficiencia Real-Time -->
-                    <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl col-span-1">
-                        <div class="flex justify-between items-start mb-8">
-                            <div class="p-2 bg-gold/20 rounded-lg">
-                                <i data-lucide="trending-up" class="text-gold w-6 h-6"></i>
+            <div class="relative group mt-10 lg:mt-0">
+                <div class="glass-card p-10 rounded-2xl scale-100 lg:scale-105 transition-transform duration-500 hover:scale-[1.02]">
+                    <h3 class="text-white font-bold text-lg mb-8 tracking-wide border-b border-white/10 pb-4">
+                        Impacto Proyectado
+                    </h3>
+                    <div class="grid grid-cols-2 gap-12 h-64">
+                        <div class="flex flex-col justify-end relative group/chart">
+                            <div class="flex items-end justify-center gap-3 h-full border-b border-white/20 pb-1">
+                                <div class="w-12 bg-slate-600 rounded-t h-[40%] relative flex justify-center group-hover/chart:opacity-80 transition-opacity">
+                                    <span class="absolute -top-6 text-[10px] text-slate-400 font-bold">Actual</span>
+                                </div>
+                                <div class="w-12 bg-growth rounded-t shadow-[0_0_15px_rgba(16,185,129,0.4)] animate-grow-height relative flex justify-center" style="--target-height: 85%">
+                                    <span class="absolute -top-7 text-sm text-growth font-black animate-fade-in">+24%</span>
+                                </div>
                             </div>
-                            <span class="text-xs text-green-400 font-mono">+12.4%</span>
+                            <p class="text-center text-slate-300 text-sm font-bold mt-3">Margen EBITDA</p>
                         </div>
-                        <h4 class="text-gray-400 text-xs uppercase font-bold tracking-widest mb-1">OEE Global</h4>
-                        <div class="text-4xl font-bold text-white mb-4">88.5%</div>
-                        <div class="flex gap-1 items-end h-12">
-                            <div class="w-full bg-gold/40 h-1/2 rounded-t-sm"></div>
-                            <div class="w-full bg-gold/60 h-2/3 rounded-t-sm"></div>
-                            <div class="w-full bg-gold/40 h-1/3 rounded-t-sm"></div>
-                            <div class="w-full bg-gold/80 h-3/4 rounded-t-sm"></div>
-                            <div class="w-full bg-gold h-full rounded-t-sm"></div>
+                        <div class="flex flex-col justify-end relative group/chart">
+                            <div class="flex items-end justify-center gap-3 h-full border-b border-white/20 pb-1">
+                                <div class="w-12 bg-slate-600 rounded-t h-[90%] relative flex justify-center group-hover/chart:opacity-80 transition-opacity">
+                                    <span class="absolute -top-6 text-[10px] text-slate-400 font-bold">Actual</span>
+                                </div>
+                                <div class="w-12 bg-electric rounded-t shadow-[0_0_15px_rgba(255,107,0,0.4)] animate-grow-height relative flex justify-center" style="--target-height: 55%">
+                                    <span class="absolute -top-7 text-sm text-electric font-black animate-fade-in">-30%</span>
+                                </div>
+                            </div>
+                            <p class="text-center text-slate-300 text-sm font-bold mt-3">Costos Operativos</p>
                         </div>
                     </div>
-
-                    <!-- Card de Proceso Automatizado -->
-                    <div class="bg-slate border border-white/10 p-6 rounded-2xl col-span-1 flex flex-col justify-between">
-                        <i data-lucide="activity" class="text-white w-8 h-8 opacity-50"></i>
-                        <div>
-                            <div class="text-3xl font-bold text-white">2.4ms</div>
-                            <p class="text-gray-300 text-xs">Latencia de Respuesta</p>
-                        </div>
-                        <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
-                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                            <span class="text-[10px] text-white uppercase font-bold">Sistemas Estables</span>
-                        </div>
-                    </div>
-
-                    <!-- Card Financiera / ROI -->
-                    <div class="bg-white/10 backdrop-blur-md border border-white/10 p-6 rounded-2xl col-span-2">
-                        <div class="flex items-center justify-between mb-6">
-                            <h4 class="text-white font-bold">Impacto Financiero Acumulado</h4>
-                            <i data-lucide="dollar-sign" class="text-gold w-5 h-5"></i>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="border-l-2 border-gold/30 pl-4">
-                                <div class="text-gray-400 text-[10px] uppercase">Ahorro Costos</div>
-                                <div class="text-xl font-bold text-white">$2.4M</div>
-                            </div>
-                            <div class="border-l-2 border-gold/30 pl-4">
-                                <div class="text-gray-400 text-[10px] uppercase">Margen Neto</div>
-                                <div class="text-xl font-bold text-white">+8.2%</div>
-                            </div>
-                            <div class="border-l-2 border-gold/30 pl-4">
-                                <div class="text-gray-400 text-[10px] uppercase">Payback</div>
-                                <div class="text-xl font-bold text-white">9 Meses</div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                
-                <!-- Decoración abstracta de fondo -->
-                <div class="absolute -top-10 -right-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl -z-10"></div>
-                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-slate/20 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-electric/5 blur-[90px] rounded-full pointer-events-none"></div>
             </div>
         </div>
     </header>
 
-    <!-- Stats Section -->
-    <section class="py-12 bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-3xl font-bold text-navy">500+</div>
-                    <div class="text-slate text-sm font-medium">Proyectos Ejecutados</div>
+    <section class="bg-[#081221] border-b border-white/5 py-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div class="flex flex-col items-center text-center px-4">
+                    <span class="text-4xl font-black text-white mb-2">+50</span>
+                    <span class="text-sm text-slate-400 font-medium uppercase tracking-widest">Proyectos Ejecutados</span>
                 </div>
-                <div>
-                    <div class="text-3xl font-bold text-navy">12</div>
-                    <div class="text-slate text-sm font-medium">Países Alcanzados</div>
+                <div class="flex flex-col items-center text-center px-4 pt-8 md:pt-0">
+                    <span class="text-4xl font-black text-white mb-2">+1,200</span>
+                    <span class="text-sm text-slate-400 font-medium uppercase tracking-widest">Horas de Consultoría</span>
                 </div>
-                <div>
-                    <div class="text-3xl font-bold text-navy">15M+</div>
-                    <div class="text-slate text-sm font-medium">Ahorros Generados (USD)</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-navy">24/7</div>
-                    <div class="text-slate text-sm font-medium">Soporte Estratégico</div>
+                <div class="flex flex-col items-center text-center px-4 pt-8 md:pt-0">
+                    <span class="text-4xl font-black text-electric mb-2">+15%</span>
+                    <span class="text-sm text-slate-400 font-medium uppercase tracking-widest">Ahorro Promedio</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="servicios" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-gold font-bold tracking-widest uppercase text-sm mb-4">Nuestros Pilares</h2>
-                <h3 class="text-4xl font-bold text-navy mb-6">Soluciones Interconectadas para Desafíos Modernos</h3>
-                <p class="text-lg text-slate leading-relaxed">
-                    No vemos las áreas de su empresa como silos aislados, sino como un ecosistema donde la eficiencia técnica y la salud financiera se alimentan mutuamente.
+    <section id="problema" class="pt-24 pb-32 bg-white relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <h2 class="text-midnight font-black text-4xl mb-6">El enemigo silencioso de la rentabilidad</h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    La mayoría de las empresas industriales pierden margen no por falta de ventas, sino por ineficiencias operativas que no detectan a tiempo. 
+                    <span class="block mt-2 italic font-medium text-electric">"Lo que no se mide, no se puede controlar, y lo que no se controla, cuesta dinero."</span>
                 </p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Servicio 1 -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
-                        <i data-lucide="settings" class="w-7 h-7"></i>
+            
+            <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:shadow-2xl hover:border-slate-300 transition-all duration-300 relative">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-red-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                        <i data-lucide="database-zap" class="text-red-600 w-7 h-7"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-navy mb-3">Ingeniería Industrial</h4>
-                    <p class="text-slate text-sm leading-relaxed mb-6">
-                        Diseño y optimización de cadenas de suministro, gestión de operaciones y Lean Manufacturing.
+                    <h4 class="text-xl font-bold text-midnight mb-4">Silos de Información</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-6">
+                        Sus datos viven en islas desconectadas (Excel, ERP, Planta). Esto genera versiones contradictorias de la realidad y consume horas de su equipo en reportes manuales.
                     </p>
-                    <ul class="text-xs space-y-2 text-navy/70 font-medium border-t pt-4">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Layout de Planta</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Control de Calidad</li>
-                    </ul>
+                    <div class="border-t border-slate-100 pt-4">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Síntomas comunes:</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Reportes en Excel propensos a error.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Doble carga de datos administrativa.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Servicio 2 -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
-                        <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:shadow-2xl hover:border-slate-300 transition-all duration-300 relative">
+                     <div class="absolute top-0 left-0 w-full h-1 bg-red-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                        <i data-lucide="search-x" class="text-red-600 w-7 h-7"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-navy mb-3">Data & Analytics</h4>
-                    <p class="text-slate text-sm leading-relaxed mb-6">
-                        Transformamos datos crudos en tableros de control predictivos para decisiones basadas en evidencia.
+                    <h4 class="text-xl font-bold text-midnight mb-4">Desperdicio Operativo</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-6">
+                        Ineficiencias invisibles en la línea de producción o logística que diluyen el margen bruto. Costos hormiga que se acumulan mes a mes sin ser auditados.
                     </p>
-                    <ul class="text-xs space-y-2 text-navy/70 font-medium border-t pt-4">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Business Intelligence</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Análisis Predictivo</li>
-                    </ul>
+                    <div class="border-t border-slate-100 pt-4">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Síntomas comunes:</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Mermas de stock no explicadas.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Tiempos muertos no registrados.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Servicio 3 -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
-                        <i data-lucide="zap" class="w-7 h-7"></i>
+                <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:shadow-2xl hover:border-slate-300 transition-all duration-300 relative">
+                     <div class="absolute top-0 left-0 w-full h-1 bg-red-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center mb-6 shadow-sm">
+                        <i data-lucide="clock-alert" class="text-red-600 w-7 h-7"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-navy mb-3">Automatización</h4>
-                    <p class="text-slate text-sm leading-relaxed mb-6">
-                        Implementación de RPA e Industria 4.0 para eliminar tareas repetitivas y minimizar errores.
+                    <h4 class="text-xl font-bold text-midnight mb-4">Gestión Reactiva</h4>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-6">
+                        Tomar decisiones mirando el retrovisor. Cuando llega el balance contable, los problemas ocurrieron hace 30 días y ya es demasiado tarde para corregirlos.
                     </p>
-                    <ul class="text-xs space-y-2 text-navy/70 font-medium border-t pt-4">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Integración de Sistemas</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Sensores IoT</li>
-                    </ul>
-                </div>
-
-                <!-- Servicio 4 -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
-                        <i data-lucide="trending-up" class="w-7 h-7"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-navy mb-3">Finanzas Corporativas</h4>
-                    <p class="text-slate text-sm leading-relaxed mb-6">
-                        Estrategia financiera alineada a la producción para asegurar flujo de caja y escalabilidad.
-                    </p>
-                    <ul class="text-xs space-y-2 text-navy/70 font-medium border-t pt-4">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Auditoría de Costos</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gold"></i> Planeación Fiscal</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Metodología -->
-    <section id="metodologia" class="py-24 bg-navy text-white relative overflow-hidden">
-        <div class="absolute right-0 top-0 w-1/3 h-full bg-gold/5 -skew-x-12 translate-x-1/2"></div>
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h3 class="text-gold font-bold uppercase text-sm mb-4">Nuestro Proceso</h3>
-                    <h2 class="text-4xl font-bold mb-8">De la complejidad a la <span class="text-gold">Rentabilidad</span></h2>
-                    
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gold font-bold text-xl border border-gold/30">1</div>
-                            <div>
-                                <h5 class="text-xl font-bold mb-2 text-white">Diagnóstico Técnico-Financiero</h5>
-                                <p class="text-gray-400">Analizamos cada nodo de su operación y su impacto directo en el balance general.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gold font-bold text-xl border border-gold/30">2</div>
-                            <div>
-                                <h5 class="text-xl font-bold mb-2 text-white">Diseño de Arquitectura de Solución</h5>
-                                <p class="text-gray-400">Creamos un plan de acción que integra ingeniería, software y finanzas.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gold font-bold text-xl border border-gold/30">3</div>
-                            <div>
-                                <h5 class="text-xl font-bold mb-2 text-white">Implementación y Monitoreo</h5>
-                                <p class="text-gray-400">Ejecutamos con equipos multidisciplinarios y medimos resultados en tiempo real.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white/5 p-1 rounded-3xl backdrop-blur-sm border border-white/10">
-                    <div class="bg-navy p-8 rounded-[1.4rem] border border-white/5">
-                        <h4 class="text-2xl font-bold mb-6 text-center">Simulación de Impacto</h4>
-                        <div class="space-y-4">
-                            <div class="h-4 bg-white/10 rounded-full overflow-hidden">
-                                <div class="bg-gold h-full w-[85%]"></div>
-                            </div>
-                            <div class="flex justify-between text-xs text-gray-400">
-                                <span>Eficiencia Operativa Actual</span>
-                                <span class="text-gold font-bold">+35% Proyectado</span>
-                            </div>
-                            <div class="h-4 bg-white/10 rounded-full overflow-hidden">
-                                <div class="bg-slate h-full w-[60%]"></div>
-                            </div>
-                            <div class="flex justify-between text-xs text-gray-400">
-                                <span>Costos Variables</span>
-                                <span class="text-slate font-bold">-22% Reducción</span>
-                            </div>
-                        </div>
+                    <div class="border-t border-slate-100 pt-4">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Síntomas comunes:</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Decisiones basadas en intuición.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5"></i> Incapacidad de proyectar Cash Flow.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-6 lg:px-8">
-            <div class="bg-gray-50 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-gray-100">
-                <div class="bg-navy p-12 text-white md:w-2/5 relative">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 blur-3xl rounded-full"></div>
-                    <h3 class="text-3xl font-bold mb-6 text-gold">Hablemos de su Próximo Salto</h3>
-                    <p class="text-gray-300 mb-8">Agende una llamada de 20 minutos con uno de nuestros consultores senior.</p>
-                    
-                    <div class="space-y-6 relative z-10">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-gold/20 rounded-lg flex items-center justify-center text-gold">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <span class="text-sm">contacto@nexusind.com</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-gold/20 rounded-lg flex items-center justify-center text-gold">
-                                <i data-lucide="phone"></i>
-                            </div>
-                            <span class="text-sm">+1 (555) 012-3456</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-gold/20 rounded-lg flex items-center justify-center text-gold">
-                                <i data-lucide="map-pin"></i>
-                            </div>
-                            <span class="text-sm">Distrito Tecnológico, Torre A</span>
-                        </div>
-                    </div>
+    <div class="relative h-16 w-full z-30">
+        <div class="absolute left-1/2 -top-10 h-28 -translate-x-1/2 flex flex-col items-center justify-center">
+            <div class="connector-line h-full"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 bg-midnight text-white px-6 py-2 rounded-full border-4 border-white shadow-xl flex items-center gap-2 z-20 whitespace-nowrap">
+                <span class="text-[10px] font-black tracking-widest uppercase text-electric">Nuestra Intervención</span>
+                <i data-lucide="arrow-down-circle" class="w-4 h-4 text-white"></i>
+            </div>
+        </div>
+    </div>
+
+    <section id="soluciones" class="pt-24 pb-24 bg-tech-gray shadow-[inset_0_10px_20px_rgba(0,0,0,0.02)] border-t border-slate-200 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 text-center max-w-3xl mx-auto">
+                <h2 class="text-midnight font-black text-4xl mb-4 leading-tight">Del proceso al dato, y del dato a la cuenta de resultados.</h2>
+                <p class="text-slate-700 font-medium text-lg">Nuestro enfoque integral conecta la planta con la estrategia financiera.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1">
+                    <h5 class="text-electric font-black text-xs uppercase tracking-widest mb-4">Módulo Técnico</h5>
+                    <h4 class="text-2xl font-bold text-midnight mb-4">Ingeniería de Procesos</h4>
+                    <p class="text-slate-600 mb-8 text-sm leading-relaxed">Re-diseño de flujos operativos para eliminar cuellos de botella y maximizar el rendimiento de activos físicos.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Lean Manufacturing</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Optimización de Layout</li>
+                    </ul>
                 </div>
+
+                <div class="bg-white p-10 rounded-2xl border-2 border-electric shadow-xl transition-all scale-105 z-10 relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-electric text-midnight text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">Más Solicitado</div>
+                    <h5 class="text-electric font-black text-xs uppercase tracking-widest mb-4">Módulo Inteligente</h5>
+                    <h4 class="text-2xl font-bold text-midnight mb-4">Análisis de Datos</h4>
+                    <p class="text-slate-600 mb-8 text-sm leading-relaxed">Transformamos datos brutos en inteligencia de negocio mediante Power BI y modelos predictivos.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Dashboards Predictivos</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Integración ERP / Cloud</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-10 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1">
+                    <h5 class="text-electric font-black text-xs uppercase tracking-widest mb-4">Módulo Estratégico</h5>
+                    <h4 class="text-2xl font-bold text-midnight mb-4">Consultoría Financiera</h4>
+                    <p class="text-slate-600 mb-8 text-sm leading-relaxed">Vinculación de KPIs operativos con el EBITDA y la rentabilidad real de su organización.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Control Presupuestario</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-800 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric"></i> Análisis de Márgenes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-midnight relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute right-[-100px] top-[-100px] opacity-10 pointer-events-none">
+             <i data-lucide="message-square" class="w-96 h-96 text-white"></i>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-2xl">
                 
-                <form class="p-12 md:w-3/5 space-y-6 bg-white">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold text-navy mb-2">Nombre</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" placeholder="Juan Pérez">
+                <div class="lg:w-5/12 bg-midnight-light p-10 lg:p-12 text-white flex flex-col justify-center relative">
+                    <h3 class="text-3xl lg:text-4xl font-black text-electric mb-4 leading-tight">Hablemos de su <br>Próximo Salto</h3>
+                    <p class="text-slate-300 mb-10 leading-relaxed text-sm lg:text-base">
+                        Agende una llamada de 20 minutos con uno de nuestros consultores senior para identificar oportunidades inmediatas de optimización.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="text-electric w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
+                                <p class="text-sm font-semibold">contacto@nexusind.com</p>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-navy mb-2">Empresa</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" placeholder="TechCorp S.A.">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="text-electric w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Teléfono</p>
+                                <p class="text-sm font-semibold">+54 9 11 1234-5678</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="text-electric w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Oficinas</p>
+                                <p class="text-sm font-semibold">Distrito Tecnológico, Torre A</p>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-navy mb-2">Correo Corporativo</label>
-                        <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all" placeholder="juan@techcorp.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-navy mb-2">Área de Interés Principal</label>
-                        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all appearance-none bg-white">
-                            <option>Ingeniería Industrial</option>
-                            <option>Data & Analytics</option>
-                            <option>Automatización</option>
-                            <option>Finanzas</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-navy mb-2">Mensaje</label>
-                        <textarea class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all h-32" placeholder="¿Cómo podemos ayudarle?"></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-4 bg-navy text-white font-bold rounded-xl hover:bg-navy/90 transition-all shadow-lg hover:shadow-navy/20 active:scale-95">
-                        Enviar Solicitud
-                    </button>
-                </form>
+                </div>
+
+                <div class="lg:w-7/12 p-10 lg:p-12 bg-white">
+                    <form action="#" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Nombre Completo</label>
+                                <input type="text" placeholder="Juan Pérez" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Empresa</label>
+                                <input type="text" placeholder="TechCorp S.A." class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Correo Corporativo</label>
+                            <input type="email" placeholder="juan@techcorp.com" class="form-input">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Área de Interés Principal</label>
+                            <div class="relative">
+                                <select class="form-input appearance-none bg-white">
+                                    <option>Ingeniería de Procesos</option>
+                                    <option>Data & Analytics (Power BI)</option>
+                                    <option>Consultoría Financiera</option>
+                                    <option>Diagnóstico Integral</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Mensaje (Opcional)</label>
+                            <textarea rows="3" placeholder="¿Cómo podemos ayudarle?" class="form-input resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-midnight text-white font-bold py-4 rounded hover:bg-slate-900 transition-colors shadow-lg flex justify-center items-center gap-2">
+                            Agendar Consulta Gratis
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 pt-16 pb-8 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-navy rounded flex items-center justify-center">
-                            <i data-lucide="layers" class="text-gold w-5 h-5"></i>
-                        </div>
-                        <span class="text-xl font-bold text-navy">NEXUS<span class="text-gold">IND</span></span>
+    <footer class="bg-[#050d1a] text-white pt-24 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-6 h-6 bg-electric rounded flex items-center justify-center">
+                        <i data-lucide="layers" class="text-midnight w-4 h-4"></i>
                     </div>
-                    <p class="text-slate text-sm leading-relaxed">
-                        Consultoría multidisciplinaria para la industria moderna. Donde los datos encuentran la ejecución técnica.
-                    </p>
+                    <span class="text-lg font-bold">NEXUS<span class="text-electric">IND</span></span>
                 </div>
-                <div>
-                    <h6 class="font-bold text-navy mb-6">Compañía</h6>
-                    <ul class="space-y-4 text-sm text-slate">
-                        <li><a href="#" class="hover:text-gold">Sobre Nosotros</a></li>
-                        <li><a href="#" class="hover:text-gold">Casos de Éxito</a></li>
-                        <li><a href="#" class="hover:text-gold">Carreras</a></li>
-                        <li><a href="#" class="hover:text-gold">Blog Técnico</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h6 class="font-bold text-navy mb-6">Soporte</h6>
-                    <ul class="space-y-4 text-sm text-slate">
-                        <li><a href="#" class="hover:text-gold">Documentación</a></li>
-                        <li><a href="#" class="hover:text-gold">Portal de Clientes</a></li>
-                        <li><a href="#" class="hover:text-gold">Seguridad</a></li>
-                        <li><a href="#" class="hover:text-gold">Privacidad</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h6 class="font-bold text-navy mb-6">Newsletter</h6>
-                    <p class="text-sm text-slate mb-4">Reciba insights mensuales sobre eficiencia industrial.</p>
-                    <div class="flex gap-2">
-                        <input type="email" placeholder="Email" class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm outline-none focus:border-gold w-full">
-                        <button class="bg-gold text-navy p-2 rounded-lg hover:bg-navy hover:text-white transition-all">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                        </button>
-                    </div>
+                <p class="text-slate-400 text-xs leading-relaxed">Ingeniería de precisión. Decisiones basadas en datos para la industria global.</p>
+            </div>
+            <div>
+                <h6 class="font-black mb-6 uppercase text-[10px] tracking-widest text-electric">Servicios</h6>
+                <ul class="text-slate-400 text-sm space-y-3 font-medium">
+                    <li><a href="#" class="hover:text-white transition-colors">Ingeniería Industrial</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Power BI & Analytics</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Finanzas B2B</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-black mb-6 uppercase text-[10px] tracking-widest text-electric">Contacto</h6>
+                <ul class="text-slate-400 text-sm space-y-3 font-medium">
+                    <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> info@nexusind.com</li>
+                    <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Distrito Tech, Torre Alpha</li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-black mb-6 uppercase text-[10px] tracking-widest text-electric">Redes</h6>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-300 hover:bg-electric hover:text-midnight transition-all">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-300 hover:bg-electric hover:text-midnight transition-all">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-slate">&copy; 2024 Nexus Industrial Consulting Group. Todos los derechos reservados.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="text-slate hover:text-navy"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate hover:text-navy"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate hover:text-navy"><i data-lucide="github" class="w-5 h-5"></i></a>
-                </div>
-            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 text-[10px] text-slate-500 font-black tracking-widest uppercase text-center md:text-left">
+            &copy; 2026 NEXUS INDUSTRIAL CONSULTING GROUP. TODOS LOS DERECHOS RESERVADOS.
         </div>
     </footer>
 
