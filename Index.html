@@ -59,19 +59,15 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid #e2e8f0;
-            background-color: #ffffff;
-            font-size: 0.875rem;
-            transition: all 0.2s;
+        /* Estilos para el acordeón de FAQ */
+        details > summary {
+            list-style: none;
         }
-        .form-input:focus {
-            outline: none;
-            border-color: #FF6B00;
-            box-shadow: 0 0 0 1px #FF6B00;
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         /* Estilo para el conector visual */
@@ -95,7 +91,14 @@
             <div class="hidden md:flex items-center gap-8">
                 <a href="#problema" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Problema</a>
                 <a href="#soluciones" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Soluciones</a>
-                <a href="#contacto" class="bg-electric text-midnight px-5 py-2.5 rounded font-bold text-sm hover:bg-white transition-all cta-shadow">Agenda una cita gratis</a>
+                <a href="#faq" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Preguntas Frecuentes</a>
+                
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1drXHB0k3fUPKQ-bGitbMG7yc0LaEkVzke-r95tYtsSBc65TyosY4WYCjwpXZL6IyC6D6HyvgN" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="bg-electric text-midnight px-5 py-2.5 rounded font-bold text-sm hover:bg-white transition-all cta-shadow">
+                   Agendar una cita gratis
+                </a>
             </div>
         </div>
     </nav>
@@ -117,12 +120,14 @@
                 </h1>
                 
                 <p class="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl font-light">
-                    Optimizamos procesos industriales y financieros mediante ingeniería avanzada y analítica de datos. <strong class="text-white font-semibold">Reduce tus costos operativos entre un 15% y 30%</strong> con decisiones basadas en evidencia.
+                    Optimizamos su capacidad de decisión integrando <strong class="text-white font-semibold">ingeniería de procesos con analítica de datos</strong> para eliminar la incertidumbre de su gestión operativa.
                 </p>
-                
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contacto" class="px-8 py-4 bg-electric text-midnight font-black rounded text-center transition-all uppercase text-sm tracking-wider hover:bg-white cta-shadow">
-                        Agenda una cita gratis
+                    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1drXHB0k3fUPKQ-bGitbMG7yc0LaEkVzke-r95tYtsSBc65TyosY4WYCjwpXZL6IyC6D6HyvgN" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="px-8 py-4 bg-electric text-midnight font-black rounded text-center transition-all uppercase text-sm tracking-wider hover:bg-white cta-shadow">
+                        Agendar una cita gratis
                     </a>
                     <a href="#soluciones" class="px-8 py-4 border border-white/20 text-white font-bold rounded text-center transition-all uppercase text-sm tracking-wider hover:bg-white/10 hover:border-white">
                         Nuestros Servicios
@@ -189,7 +194,7 @@
             <div class="text-center max-w-4xl mx-auto mb-20">
                 <h2 class="text-midnight font-black text-4xl mb-6">El enemigo silencioso de la rentabilidad</h2>
                 <p class="text-slate-600 text-lg leading-relaxed">
-                    La mayoría de las empresas industriales pierden margen no por falta de ventas, sino por ineficiencias operativas que no detectan a tiempo. 
+                    La mayoría de las empresas industriales pierden margen no por falta de ventas, sino por ineficiencias operativas que no detectan a tiempo.
                     <span class="block mt-2 italic font-medium text-electric">"Lo que no se mide, no se puede controlar, y lo que no se controla, cuesta dinero."</span>
                 </p>
             </div>
@@ -304,98 +309,114 @@
         </div>
     </section>
 
+    <section id="faq" class="py-24 bg-white relative z-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-electric font-black text-xs uppercase tracking-widest mb-2 block">Dudas Comunes</span>
+                <h2 class="text-midnight font-black text-3xl md:text-4xl">Preguntas Frecuentes</h2>
+            </div>
+            
+            <div class="space-y-4">
+                <details class="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 open:border-electric/50 open:shadow-lg open:bg-white">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-bold text-midnight group-open:text-electric transition-colors">¿Cómo sé si mi empresa necesita este tipo de consultoría?</span>
+                        <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center group-open:bg-electric group-open:border-electric transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:text-white group-open:rotate-180 transition-transform duration-300"></i>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed">
+                        Si tiene dificultades para obtener datos fiables en tiempo real, sus reportes dependen excesivamente de Excel manual, o siente que sus costos operativos están erosionando sus márgenes sin una causa clara, es el momento ideal. Nuestras soluciones suelen generar un retorno de inversión en los primeros 6 meses.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 open:border-electric/50 open:shadow-lg open:bg-white">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-bold text-midnight group-open:text-electric transition-colors">¿Cuánto tiempo toma realizar un diagnóstico inicial?</span>
+                        <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center group-open:bg-electric group-open:border-electric transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:text-white group-open:rotate-180 transition-transform duration-300"></i>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed">
+                        Nuestro proceso de diagnóstico "Flash Audit" toma aproximadamente 2 semanas. En este tiempo relevamos sus procesos críticos, analizamos la calidad de sus datos y entregamos una hoja de ruta con oportunidades de mejora cuantificadas económicamente.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 open:border-electric/50 open:shadow-lg open:bg-white">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-bold text-midnight group-open:text-electric transition-colors">¿Necesito cambiar mi software ERP actual?</span>
+                        <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center group-open:bg-electric group-open:border-electric transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:text-white group-open:rotate-180 transition-transform duration-300"></i>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed">
+                        No necesariamente. Nuestro enfoque es agnóstico a la tecnología. Nos integramos con sus sistemas existentes (SAP, Oracle, Microsoft, o desarrollos a medida) para extraer valor de los datos que ya genera, creando capas de inteligencia por encima de su infraestructura actual.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <section id="contacto" class="py-24 bg-midnight relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
         <div class="absolute right-[-100px] top-[-100px] opacity-10 pointer-events-none">
              <i data-lucide="message-square" class="w-96 h-96 text-white"></i>
         </div>
 
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row bg-white rounded-3xl overflow-hidden shadow-2xl">
-                
-                <div class="lg:w-5/12 bg-midnight-light p-10 lg:p-12 text-white flex flex-col justify-center relative">
-                    <h3 class="text-3xl lg:text-4xl font-black text-electric mb-4 leading-tight">Hablemos de su <br>Próximo Salto</h3>
-                    <p class="text-slate-300 mb-10 leading-relaxed text-sm lg:text-base">
-                        Agende una llamada de 20 minutos con uno de nuestros consultores senior para identificar oportunidades inmediatas de optimización.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
-                                <i data-lucide="mail" class="text-electric w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
-                                <p class="text-sm font-semibold">contacto@nexusind.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
-                                <i data-lucide="phone" class="text-electric w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Teléfono</p>
-                                <p class="text-sm font-semibold">+54 9 11 1234-5678</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0">
-                                <i data-lucide="map-pin" class="text-electric w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Oficinas</p>
-                                <p class="text-sm font-semibold">Distrito Tecnológico, Torre A</p>
-                            </div>
-                        </div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-electric/30 bg-electric/10 mb-8 text-electric text-xs font-bold uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-electric animate-pulse"></span>
+                Agenda Abierta
+            </div>
+
+            <h3 class="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+                ¿Listo para optimizar su planta?
+            </h3>
+            
+            <p class="text-slate-300 mb-12 leading-relaxed text-lg max-w-2xl mx-auto">
+                Agende una llamada estratégica de 20 minutos. Sin compromisos de venta, solo un análisis honesto de si podemos ayudarle a escalar.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-16">
+                 <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1drXHB0k3fUPKQ-bGitbMG7yc0LaEkVzke-r95tYtsSBc65TyosY4WYCjwpXZL6IyC6D6HyvgN" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-electric text-midnight font-black text-lg rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,107,0,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)]">
+                    Agendar una cita gratis
+                    <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
+                 </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto border-t border-white/10 pt-10">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0 text-electric">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Email</p>
+                        <p class="text-sm font-semibold text-white">contacto@nexusind.com</p>
                     </div>
                 </div>
-
-                <div class="lg:w-7/12 p-10 lg:p-12 bg-white">
-                    <form action="#" class="space-y-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Nombre Completo</label>
-                                <input type="text" placeholder="Juan Pérez" class="form-input">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Empresa</label>
-                                <input type="text" placeholder="TechCorp S.A." class="form-input">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Correo Corporativo</label>
-                            <input type="email" placeholder="juan@techcorp.com" class="form-input">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Área de Interés Principal</label>
-                            <div class="relative">
-                                <select class="form-input appearance-none bg-white">
-                                    <option>Ingeniería de Procesos</option>
-                                    <option>Data & Analytics (Power BI)</option>
-                                    <option>Consultoría Financiera</option>
-                                    <option>Diagnóstico Integral</option>
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Mensaje (Opcional)</label>
-                            <textarea rows="3" placeholder="¿Cómo podemos ayudarle?" class="form-input resize-none"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-midnight text-white font-bold py-4 rounded hover:bg-slate-900 transition-colors shadow-lg flex justify-center items-center gap-2">
-                            Agendar Consulta Gratis
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                    </form>
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0 text-electric">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Teléfono</p>
+                        <p class="text-sm font-semibold text-white">+54 9 11 1234-5678</p>
+                    </div>
                 </div>
-
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center shrink-0 text-electric">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Oficinas</p>
+                        <p class="text-sm font-semibold text-white">Distrito Tecnológico</p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -445,7 +466,6 @@
     <script>
         // Inicializar Iconos
         lucide.createIcons();
-
         // Efecto scroll para el navbar
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
