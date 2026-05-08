@@ -15,6 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+    <!-- Tally -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+
     <style>
         /* --- 1. DESIGN SYSTEM & RESET --- */
         :root {
@@ -1117,7 +1123,8 @@
                 <a href="#fases" onclick="toggleMenu()">Metodología</a>
                 <a href="#soluciones" onclick="toggleMenu()">Soluciones</a>
                 <a href="#faq" onclick="toggleMenu()">FAQ</a>
-                <a href="#cta" class="btn-ghost" onclick="toggleMenu()">Agendar diagnostico gratis</a>
+                <!-- Botón actualizado con la funcionalidad de Calendly -->
+                <a href="#" class="btn-ghost" onclick="abrirCalendly(event); toggleMenu()">Agendar sesion gratis</a>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
                 <i class="fas fa-bars"></i>
@@ -1149,13 +1156,19 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#cta" class="btn-primary">
-                    Agendar diagnostico gratis <i class="fas fa-arrow-right"></i>
+                <a href="javascript:void(0)" class="btn-primary" data-tally-open="68AD7Y" data-tally-layout="modal"
+                    data-tally-width="800" data-tally-emoji-text="📊" data-tally-emoji-animation="wave">
+                    Hacer autodiagnóstico <i class="fas fa-arrow-right"></i>
                 </a>
+
                 <a href="#fases" class="btn-ghost">
                     Ver metodología
                 </a>
             </div>
+
+            <script async src="https://tally.so/widgets/embed.js"></script>
+
+            <script async src="https://tally.so/widgets/embed.js"></script>
 
             <div class="hero-stats">
                 <div class="stat-item">
@@ -2176,12 +2189,17 @@
                         perdiendo tiempo, dinero y capacidad de crecer.
                     </p>
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <a href="mailto:hola@nexus.com" class="btn-primary"
-                            style="padding: 16px 40px; font-size: 16px;">
-                            Solicitar diagnostico gratis <i class="fas fa-arrow-right"></i>
+                        <a href="javascript:void(0)" class="btn-primary" data-tally-open="68AD7Y"
+                            data-tally-layout="modal" data-tally-width="800" data-tally-emoji-text="📊"
+                            data-tally-emoji-animation="wave"
+                            style="padding: 16px 40px; font-size: 16px; text-decoration: none;">
+                            Realizar autodiagnostico gratis <i class="fas fa-arrow-right"></i>
                         </a>
-                        <span style="font-size: 13px; color: var(--text-muted);"><i class="fas fa-lock"
-                                style="font-size: 10px; margin-right: 5px;"></i> Sin compromiso · Cupos limitados</span>
+
+                        <span style="font-size: 13px; color: var(--text-muted);">
+                            <i class="fas fa-lock" style="font-size: 10px; margin-right: 5px;"></i>
+                            Obtene el nivel de tu empresa en segundos
+                        </span>
                     </div>
                 </div>
             </div>
@@ -2318,6 +2336,33 @@
             });
         });
     </script>
+    <!-- Calendly Multi-Funcional - Nexus Business Performance -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+        // 1. Esta parte crea el botón flotante (Badge) automáticamente al cargar
+        window.addEventListener('load', function () {
+            if (window.Calendly) {
+                Calendly.initBadgeWidget({
+                    url: 'https://calendly.com/nicse-jara/30min',
+                    text: 'Agenda una sesión gratis',
+                    color: '#003366',
+                    textColor: '#ffffff',
+                    branding: false
+                });
+            }
+        });
+
+        // 2. Esta función permite que tus botones fijos abran el Pop-up
+        function abrirCalendly(event) {
+            if (event) event.preventDefault();
+            if (window.Calendly) {
+                Calendly.initPopupWidget({
+                    url: 'https://calendly.com/nicse-jara/30min'
+                });
+            }
+        }
+    </script>
+
 </body>
 
 </html>
